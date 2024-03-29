@@ -97,4 +97,5 @@ RSpec.configure do |config|
 =end
 require 'rspec'
 require_relative '../lib/card'
+require_relative '../lib/deck'
 end
