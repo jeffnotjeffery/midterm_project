@@ -1,4 +1,5 @@
 require_relative '../lib/hand'
+require_relative '../lib/card'
 
 RSpec.describe Hand do
     describe "#initialize" do
