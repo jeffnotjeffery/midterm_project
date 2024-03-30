@@ -10,4 +10,3 @@ class Card
         "#{value} of #{suit}"
     end
 end
-

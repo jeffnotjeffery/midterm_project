@@ -1,8 +1,13 @@
 class Player
-    attr_reader :hand, :pot
+    attr_accessor :hand, :pot, :name
 
-    def initialize(hand,pot)
+    def initialize(hand,pot, name)
         @hand = hand
         @pot = pot
+        @name = name
+    end
+
+    def to_s
+        "Player's Hand: #{hand}"
     end
 end

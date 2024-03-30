@@ -1,6 +1,6 @@
 class Hand
     attr_reader :cards
-
+#levels of hand strength
     HAND_STRENGTHS = {
         high_card: 0,
         pair: 1,
@@ -13,9 +13,16 @@ class Hand
         straight_flush: 8
     }
 
+    def discard(indexes)
+        indexes.sort.reverse_each do |index|
+          @cards.delete_at(index - 1)
+        end
+    end
+
     def initialize(cards)
         @cards = cards
     end
+#classifies the strength of hands
 
     def hand_strength
         if straight_flush?
@@ -58,7 +65,7 @@ def straight_flush?
   end
 
   def straight?
-    values = cards.map(&:value).sort
+    values = cards.map(&:value).sort_by { |value| Card::VALUES.index(value) } # Convert card values to their corresponding numeric representations
     (values.last - values.first) == 4 && values.uniq.length == 5
   end
 
@@ -72,6 +79,10 @@ def straight_flush?
 
   def pair?
     cards.group_by(&:value).any? { |_, group| group.length == 2 }
+  end
+
+  def to_s
+    cards.map(&:to_string).join(", ")
   end
 end
 
