@@ -16,7 +16,7 @@ player2_hand = Hand.new(deck.deal(hand_size))
 #set the pot
 pot = 100
 # creates players with hands and pot
-player1 = Player.new(player1_hand, pot, "Player 1 ")
+player1 = Player.new(player1_hand, pot, "Player 1  ")
 player2 = Player.new(player2_hand,pot, "Player 2 ")
 #player array
 players = [player1, player2]

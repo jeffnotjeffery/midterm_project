@@ -65,7 +65,9 @@ def straight_flush?
   end
 
   def straight?
-    values = cards.map(&:value).sort_by { |value| Card::VALUES.index(value) } # Convert card values to their corresponding numeric representations
+    values = cards.map { |value| Card::VALUES.index(value) } # Convert card values to their corresponding numeric representations
+    values.compact! # Remove any nil values from the array
+    return false if values.length != 5 # Not a straight if there are not exactly 5 distinct card values
     (values.last - values.first) == 4 && values.uniq.length == 5
   end
 

@@ -4,7 +4,7 @@ class Game
     def initialize(deck, players)
         @players = players
         @deck = deck
-        @pot = 0
+        @pot = 250
     end
 
     def start_round
@@ -38,7 +38,7 @@ class Game
                 puts "#{player.name} sees."
                 # Player sees, add to the pot
                 @pot += amount
-              when :raise
+            when :raise
                 puts "#{player.name} raises by #{amount}."
                 # Player raises, deduct from their pot and add to the main pot
                 player.pot -= amount
@@ -93,6 +93,10 @@ def determine_winner
       amount = gets.chomp.to_i
       # Validate if the player has enough funds to raise
       if amount <= player.pot
+        puts "#{player.name} raises by #{amount}."
+        # Player raises, deduct from their pot and add to the main pot
+        player.pot -= amount
+        @pot += amount
         return :raise, amount
       else
         puts "You don't have enough funds to raise by #{amount}."
